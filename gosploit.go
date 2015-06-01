@@ -7,11 +7,6 @@ import (
 )
 
 func main() {
-	log.Println(os.Hostname())
-	g, err := os.Getgroups()
-	if err != nil {
-		panic(err)
-	}
 
 	tmp := os.TempDir()
 	td, err := ioutil.ReadDir(tmp)
@@ -20,8 +15,16 @@ func main() {
 	}
 	log.Println(td)
 
-	log.Println(g)
-	log.Println(os.Getpagesize())
-	log.Println(os.Environ())
-	log.Println(os.Environ())
+	/*
+		log.Println(os.Hostname())
+		g, err := os.Getgroups()
+		if err != nil {
+			panic(err)
+		}
+
+		log.Println(g)
+		log.Println(os.Getpagesize())
+		log.Println(os.Environ())
+		log.Println(os.Environ())
+	*/
 }
