@@ -13,7 +13,10 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	log.Println(td)
+	for i, t := range td {
+		log.Println(t.Name())
+		log.Println(t.ModTime())
+	}
 
 	/*
 		log.Println(os.Hostname())
