@@ -1,6 +1,7 @@
 package main
 
 import (
+	"io/ioutil"
 	"log"
 	"os"
 )
@@ -11,10 +12,16 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	tmp := os.TempDir()
+	td, err := ioutil.ReadDir(tmp)
+	if err != nil {
+		panic(err)
+	}
+	log.Println(td)
+
 	log.Println(g)
 	log.Println(os.Getpagesize())
-	log.Println(os.TempDir())
 	log.Println(os.Environ())
-	os.Clearenv()
 	log.Println(os.Environ())
 }
