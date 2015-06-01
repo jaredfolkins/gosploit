@@ -13,6 +13,7 @@ func main() {
 	}
 	log.Println(g)
 	log.Println(os.Getpagesize())
+	log.Println(os.TempDir())
 	log.Println(os.Environ())
 	os.Clearenv()
 	log.Println(os.Environ())
