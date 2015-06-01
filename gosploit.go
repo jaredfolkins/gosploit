@@ -13,7 +13,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	for i, t := range td {
+	for _, t := range td {
 		log.Println(t.Name())
 		log.Println(t.ModTime())
 	}
