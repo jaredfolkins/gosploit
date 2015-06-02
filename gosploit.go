@@ -4,6 +4,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"path/filepath"
 )
 
 func main() {
@@ -13,10 +14,19 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	for _, t := range td {
-		log.Println(t.Name())
-		log.Println(t.ModTime())
-	}
+
+	location := "/"
+	err = filepath.Walk(location, func(path string, _ os.FileInfo, _ error) error {
+		numScanned++
+		log.Println(path)
+	})
+
+	/*
+		for _, t := range td {
+			log.Println(t.Name())
+			log.Println(t.ModTime())
+		}
+	*/
 
 	/*
 		log.Println(os.Hostname())
