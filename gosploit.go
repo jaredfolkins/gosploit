@@ -1,7 +1,6 @@
 package main
 
 import (
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -9,23 +8,28 @@ import (
 
 func main() {
 
-	tmp := os.TempDir()
-	td, err := ioutil.ReadDir(tmp)
+	var err error
+
+	location := "/"
+	err = filepath.Walk(location, func(path string, _ os.FileInfo, _ error) error {
+		log.Println(path)
+		return nil
+	})
 	if err != nil {
 		panic(err)
 	}
 
-	location := "/"
-	err = filepath.Walk(location, func(path string, _ os.FileInfo, _ error) error {
-		numScanned++
-		log.Println(path)
-	})
-
 	/*
-		for _, t := range td {
-			log.Println(t.Name())
-			log.Println(t.ModTime())
+		tmp := os.TempDir()
+		td, err := ioutil.ReadDir(tmp)
+		if err != nil {
+			panic(err)
 		}
+
+			for _, t := range td {
+				log.Println(t.Name())
+				log.Println(t.ModTime())
+			}
 	*/
 
 	/*
